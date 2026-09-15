@@ -1,61 +1,180 @@
-# Ancient Egypt — History Project
+:root{
+  --sand: #E7D8AE;
+  --papyrus: #F6EFDD;
+  --lapis: #1B3B6F;
+  --gold: #B8892B;
+  --ink: #2B2118;
+  --line: rgba(43,33,24,0.15);
+}
 
-A simple multi-page-style website (single scrolling page with sections) built
-for a school history assignment on Ancient Egypt, ready to publish for free
-on GitHub Pages.
+*{ box-sizing: border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
 
-## Folder structure
+body{
+  background: var(--papyrus);
+  color: var(--ink);
+  font-family: 'Source Serif 4', serif;
+  line-height: 1.65;
+}
 
-```
-egypt-project/
-├── index.html        ← main page (content, structure)
-├── css/
-│   └── style.css      ← all styling
-├── js/
-│   └── script.js       ← small script (personalizes footer name)
-├── images/             ← put any images you add here (empty for now)
-└── README.md            ← this file
-```
+h1, h2, h3, .brand{
+  font-family: 'Cinzel', serif;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
 
-Keeping CSS, JS, and images in their own folders (instead of all files loose)
-is standard practice and makes the project easier to grade and extend.
+/* Nav */
+#topnav{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--lapis);
+  color: var(--papyrus);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 0.9rem 1.5rem;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+#topnav .brand{ font-size: 1.05rem; color: var(--gold); }
+#topnav ul{
+  list-style:none;
+  display:flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+#topnav a{
+  color: var(--papyrus);
+  text-decoration:none;
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.95rem;
+  border-bottom: 1px solid transparent;
+}
+#topnav a:hover, #topnav a:focus-visible{
+  border-bottom-color: var(--gold);
+  outline: none;
+}
 
-## How to edit the content
+/* Hero */
+.hero{
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 4.5rem 1.5rem 3rem;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+.kicker{
+  color: var(--gold);
+  font-size: 0.95rem;
+  margin-bottom: 0.6rem;
+}
+.hero h1{
+  font-size: 3rem;
+  color: var(--lapis);
+  margin-bottom: 1rem;
+}
+.hero-sub{
+  max-width: 55ch;
+  font-size: 1.1rem;
+  color: #4A3E2E;
+}
 
-- Open `index.html` in a text editor (VS Code, Notepad++, or even GitHub's
-  web editor) and change the text inside each `<section>` to match your own
-  research and writing.
-- Update the **Sources** section with your real citations — don't leave the
-  placeholders in for your actual submission.
-- Add images: drop image files into the `images/` folder, then reference them
-  in `index.html` like this:
-  ```html
-  <img src="images/pyramid.jpg" alt="The Great Pyramid of Giza">
-  ```
-- Change `Your Name` in `js/script.js` (or directly in the footer of
-  `index.html`) to your actual name.
+main{
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
 
-## How to publish it on GitHub Pages (free)
+section{
+  padding: 3.2rem 0;
+  border-bottom: 1px solid var(--line);
+}
+section:last-of-type{ border-bottom: none; }
 
-1. Go to [github.com](https://github.com) and log in (or create a free account).
-2. Click the **+** icon (top right) → **New repository**.
-   - Name it whatever you like, e.g. `ancient-egypt-project`.
-   - Keep it **Public** (required for free GitHub Pages).
-3. On the new repository page, click **Add file → Upload files**.
-4. Drag in the whole folder structure above — `index.html`, the `css` folder,
-   the `js` folder, and `images` folder — keeping the same file paths. Commit
-   the upload.
-5. Go to **Settings → Pages** (left sidebar).
-6. Under **Source**, choose the `main` branch and `/ (root)` folder, then
-   click **Save**.
-7. Wait 1–2 minutes. GitHub will show a link like:
-   `https://yourusername.github.io/ancient-egypt-project/`
-8. Open that link — your project is now live. This is the link you can submit
-   for your assignment.
+section h2{
+  font-size: 1.7rem;
+  color: var(--lapis);
+  margin-bottom: 1rem;
+}
+.section-intro{
+  max-width: 62ch;
+  margin-bottom: 1.6rem;
+  color: #4A3E2E;
+}
+section p{ max-width: 68ch; }
 
-## Notes for your teacher / submission
+/* Timeline (a real sequence, so numbering/markers are justified) */
+.timeline{
+  list-style:none;
+  border-left: 2px solid var(--gold);
+  padding-left: 1.5rem;
+  display:flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+.timeline li{ position: relative; }
+.timeline li::before{
+  content:'';
+  position:absolute;
+  left: -1.63rem;
+  top: 0.3rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+.t-date{
+  display:block;
+  font-family: 'Cinzel', serif;
+  font-size: 0.85rem;
+  color: var(--gold);
+  margin-bottom: 0.2rem;
+}
+.timeline h3{ font-size: 1.1rem; margin-bottom: 0.3rem; color: var(--ink); }
 
-- No installation or server is required — this is a static site, so the link
-  works directly in any browser.
-- If your assignment requires a written report in addition to the webpage,
-  you can still submit this URL as supplementary/interactive material.
+/* Cards */
+.card-grid{
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+}
+.card{
+  background: var(--sand);
+  border: 1px solid var(--line);
+  padding: 1.2rem 1.3rem;
+  border-radius: 2px;
+}
+.card h3{ font-size: 1.05rem; margin-bottom: 0.4rem; color: var(--lapis); }
+.card p{ font-size: 0.95rem; color: #3A2F22; }
+
+.sources{
+  list-style: disc;
+  padding-left: 1.4rem;
+  color: #4A3E2E;
+  display:flex;
+  flex-direction:column;
+  gap:0.4rem;
+}
+
+footer{
+  text-align:center;
+  padding: 2.5rem 1.5rem 3rem;
+  font-size: 0.9rem;
+  color: #6B5D45;
+}
+
+a:focus-visible, button:focus-visible{
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+@media (max-width: 600px){
+  .hero h1{ font-size: 2.2rem; }
+  .card-grid{ grid-template-columns: 1fr; }
+  #topnav{ flex-direction: column; align-items:flex-start; }
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior: auto; }
+}
